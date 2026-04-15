@@ -8,7 +8,7 @@ float generate_uniform_scaled() {
 }
 
 float generate_gaussian_scaled() {
-    // ..
+    // ...
 }
 
 int main() {
