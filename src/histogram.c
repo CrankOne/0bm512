@@ -1,11 +1,7 @@
-#include <cmath>
-struct Histogram1D {
-    int nBins;
-    int * counters;
-    int underflow, overflow;
-    float min;
-    float max;
-};
+#include "histogram.h"
+
+#include <stdlib.h>
+#include <stdio.h>
 
 void hist1d_init(struct Histogram1D * hist, int nBins, float min, float max) {
     hist->nBins = nBins;
