@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 
 void hist1d_init(struct Histogram1D * hist, int nBins, float min, float max) {
     hist->nBins = nBins;
