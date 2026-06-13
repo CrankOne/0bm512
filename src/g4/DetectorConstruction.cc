@@ -271,7 +271,7 @@ DetectorConstruction::Construct() {
     const G4bool checkOverlaps = true;
 
     // Create world (box)
-    const double worldDims[] = {1*m, 1*m, 3*m};  // full world dimensions
+    const double worldDims[] = {1*m, 1*m, 10*m};  // full world dimensions
     auto solidWorld = new G4Box("World",
             worldDims[0]/2, worldDims[1]/2, worldDims[2]/2);  // its size
     auto logicWorld = new G4LogicalVolume(solidWorld,  // its solid
@@ -292,14 +292,14 @@ DetectorConstruction::Construct() {
     //auto calo = new HomogeneousCalo(25*cm, 15*cm, 15*cm, 5, 3);
     //G4LogicalVolume * logicCalo = calo->construct_calo();
 
-    //auto calo = new HeterogeneousCalo(30*cm, 50*cm, 5, 8, 10, 5*cm, 1.5*cm);
-    //G4LogicalVolume * logicCalo = calo->construct_calo();
+    auto calo = new HeterogeneousCalo(30*cm, 50*cm, 5, 8, 10, 5*cm, 1.5*cm);
+    G4LogicalVolume * logicCalo = calo->construct_calo();
 
-    auto calo = new Hodoscope(2*cm, 34*cm, 2*cm, 16, 16);
-    G4LogicalVolume * logicCalo = calo->construct_hodoscope();
+    //auto calo = new Hodoscope(2*cm, 34*cm, 2*cm, 16, 16);
+    //G4LogicalVolume * logicCalo = calo->construct_hodoscope();
 
     new G4PVPlacement(nullptr
-            , G4ThreeVector(0, 0, 1*m)
+            , G4ThreeVector(0, 0, 4*m)
             , logicCalo
             , "Calo", logicWorld, false, 0, checkOverlaps);
 
@@ -321,7 +321,7 @@ DetectorConstruction::ConstructSDandField() {
     // detector instance with Geant4 API)
     G4SDManager::GetSDMpointer()->AddNewDetector(absoSD);
 
-    SetSensitiveDetector("logicSlabX", absoSD);
+    SetSensitiveDetector("CaloCell", absoSD);
     // ^^^ CAVEAT: logic volume name:
     //      "phantom" for a water phantom (when it is constructed)
     //      "homoCell" for a cell of homogeneous calorimeter

@@ -18,11 +18,11 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
   G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
   G4String particleName;
   G4ParticleDefinition* particle
-    = particleTable->FindParticle(particleName="neutron");
+    = particleTable->FindParticle(particleName="kaon0S");
   assert(particle);  // XXX
   fParticleGun->SetParticleDefinition(particle);
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));
-  fParticleGun->SetParticleEnergy(10.*MeV);
+  fParticleGun->SetParticleEnergy(60.*GeV);
 }
 
 PrimaryGeneratorAction::~PrimaryGeneratorAction()
@@ -33,7 +33,7 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction()
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent) {
     G4double x0 = 0;  //;size * envSizeXY * (G4UniformRand()-0.5);
     G4double y0 = 0;  //size * envSizeXY * (G4UniformRand()-0.5);
-    G4double z0 = .5 * m;
+    G4double z0 = -4.99 * m;
 
     fParticleGun->SetParticlePosition(G4ThreeVector(x0,y0,z0));
 
