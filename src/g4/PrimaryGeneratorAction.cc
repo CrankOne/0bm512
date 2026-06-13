@@ -22,7 +22,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
   assert(particle);  // XXX
   fParticleGun->SetParticleDefinition(particle);
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));
-  fParticleGun->SetParticleEnergy(300.*MeV);
+  fParticleGun->SetParticleEnergy(10.*MeV);
 }
 
 PrimaryGeneratorAction::~PrimaryGeneratorAction()
